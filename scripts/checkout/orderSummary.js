@@ -39,7 +39,7 @@ export function renderOrderSummary() {
 
     let cartItemHTML = '';
 
-    cart.forEach((cartItem) => {
+    cart.cartItems.forEach((cartItem) => {
         const matchingProduct = getProduct(cartItem.productId)
 
         const deliveryOptionId = cartItem.deliveryOptionId;

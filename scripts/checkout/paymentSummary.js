@@ -15,7 +15,7 @@ export function renderPaymentSummary() {
   let totalOrderPriceCents = 0;
   let cartQuantity = 0;
 
-  cart.forEach((cartItem) => {
+  cart.cartItems.forEach((cartItem) => {
     const product = getProduct(cartItem.productId);
     totalItemsPriceCents += product.priceCents * cartItem.quantity;
     totalShippingPriceCents += (getDeliveryOption(cartItem.deliveryOptionId).priceCents);
@@ -121,7 +121,7 @@ export function renderPaymentSummary() {
       id: crypto.randomUUID(),
       orderTime: today.format('MMMM D'),
       totalCostCents: totalOrderPriceCents,
-      products: cart.map(cartItem => {
+      products: cart.cartItems.map(cartItem => {
         const deliveryOption = getDeliveryOption(cartItem.deliveryOptionId);
         const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
 
